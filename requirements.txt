@@ -96,3 +96,14 @@ tzdata==2024.2
 urllib3==2.3.0
 uvicorn==0.34.0
 yarl==1.18.3
+
+
+def create_chunks(extracted_data):
+    text_splitter=RecursiveCharacterTextSplitter(chunk_size=100,
+                                                 chunk_overlap=25)
+    text_chunks=text_splitter.split_documents(extracted_data)
+    return text_chunks
+
+text_chunks=create_chunks(extracted_data=documents)
+print(text_chunks)
+print("Length of Text Chunks: ", len(text_chunks))
